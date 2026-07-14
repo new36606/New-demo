@@ -9,16 +9,15 @@
   }
 
   function makeFlag(code) {
+    const normalized = code.toLowerCase();
     const wrap = document.createElement("span");
     wrap.className = "flag-wrap";
 
     const image = document.createElement("img");
     image.className = "flag-img";
-    image.src = `https://flagcdn.com/24x18/${code.toLowerCase()}.png`;
-    image.srcset = `https://flagcdn.com/48x36/${code.toLowerCase()}.png 2x`;
-    image.width = 24;
-    image.height = 18;
+    image.src = `https://flagcdn.com/${normalized}.svg`;
     image.alt = `${code} flag`;
+    image.loading = "lazy";
     image.decoding = "async";
 
     const fallback = document.createElement("span");
