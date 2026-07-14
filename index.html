@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <meta name="theme-color" content="#071a33">
-  <meta name="description" content="Globelink Thailand sailing schedules">
+  <meta name="description" content="Search and request Globelink Thailand sailing schedules.">
   <title>Globelink Thailand | Sailing Schedules</title>
+  <link rel="preconnect" href="https://flagcdn.com" crossorigin>
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./theme.css">
 </head>
 <body>
   <header class="topbar">
@@ -14,7 +16,7 @@
       <span class="brand-ring">G</span>
       <span><strong>GLOBELINK</strong><small>THAILAND</small></span>
     </a>
-    <nav>
+    <nav aria-label="Primary navigation">
       <a href="#schedules">Schedules</a>
       <a href="https://line.me/R/ti/p/%40GlobelinkThailand" target="_blank" rel="noopener">Chat</a>
       <button id="adminOpen" class="nav-button" type="button">Admin</button>
@@ -32,36 +34,30 @@
           <a class="button line" href="https://line.me/R/ti/p/%40GlobelinkThailand" target="_blank" rel="noopener">Chat on LINE</a>
         </div>
       </div>
-      <div class="hero-routes" aria-hidden="true">
-        <span>🇹🇭 Bangkok</span><b>→</b><span>🇯🇵 Tokyo</span>
-        <span>🇹🇭 Bangkok</span><b>→</b><span>🇨🇿 Prague</span>
-        <span>🇹🇭 Bangkok</span><b>→</b><span>🇵🇭 Manila</span>
-      </div>
+      <div class="hero-visual" role="img" aria-label="Global shipping network and container vessel"></div>
     </section>
 
     <section id="schedules" class="schedule-section">
       <div class="section-head">
         <div><p class="eyebrow dark">SAILING SCHEDULE</p><h2>Search available sailings</h2></div>
-        <span id="resultCount" class="count-pill">Loading…</span>
+        <span id="resultCount" class="count-pill">Loading...</span>
       </div>
-
       <form id="searchForm" class="filters">
         <label>Region<select id="regionFilter"><option value="">All regions</option></select></label>
         <label>Destination<select id="destinationFilter"><option value="">All destinations</option></select></label>
         <label>Closing from<input id="dateFrom" type="date"></label>
         <label>Closing to<input id="dateTo" type="date"></label>
-        <label class="wide">Vessel, carrier or port<input id="keyword" type="search" placeholder="Search…"></label>
+        <label class="wide">Vessel, carrier or port<input id="keyword" type="search" placeholder="Search..."></label>
         <button class="button primary" type="submit">Search</button>
         <button class="button outline" id="clearFilters" type="button">Clear</button>
       </form>
-
       <div id="notice" class="notice" hidden></div>
       <div id="scheduleList" class="schedule-list" aria-live="polite"></div>
     </section>
   </main>
 
   <a class="chat-fab" href="https://line.me/R/ti/p/%40GlobelinkThailand" target="_blank" rel="noopener" aria-label="Chat with Globelink Thailand on LINE">
-    <span>💬</span><strong>Chat with us</strong>
+    <span aria-hidden="true">💬</span><strong>Chat with us</strong>
   </a>
 
   <dialog id="requestDialog" class="dialog">
@@ -81,7 +77,7 @@
         <label class="full">Commodity<input name="commodity" maxlength="160"></label>
         <label class="full">Remarks<textarea name="remarks" maxlength="1000" rows="3"></textarea></label>
       </div>
-      <p class="form-note">This GitHub Pages demo saves requests only in this browser.</p>
+      <p class="form-note">This static version saves requests only in the current browser.</p>
       <button class="button primary full-button" type="submit">Submit request</button>
     </form>
   </dialog>
@@ -95,7 +91,7 @@
           <label>Password<input id="adminPassword" type="password" required autocomplete="current-password"></label>
           <button class="button primary" type="submit">Sign in</button>
         </form>
-        <p class="form-note">Client-side demo only. Changes stay on this browser.</p>
+        <p class="form-note">Client-side demo only. Changes stay in this browser.</p>
       </div>
       <div id="adminPanel" hidden>
         <div class="admin-head"><div><p class="eyebrow dark">ADMIN</p><h3>Manage schedules</h3></div><button id="adminLogout" class="button outline" type="button">Log out</button></div>
@@ -141,5 +137,6 @@
   <div id="toast" class="toast" hidden></div>
   <footer>© 2026 Globelink (Thailand) Co., Ltd. · In Unity, We Link The Globe.</footer>
   <script src="./app.js" defer></script>
+  <script src="./flag-fix.js" defer></script>
 </body>
 </html>
