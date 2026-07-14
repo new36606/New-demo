@@ -1,11 +1,21 @@
-import { cp, mkdir, rm } from 'node:fs/promises';
+import { cp, mkdir, rm } from "node:fs/promises";
 
-const out = 'dist';
-await rm(out, { recursive: true, force: true });
-await mkdir(out, { recursive: true });
+const outputDirectory = "dist";
+const files = [
+  "index.html",
+  "styles.css",
+  "theme.css",
+  "app.js",
+  "flag-fix.js",
+  "schedules.csv",
+  "hero-bg.svg",
+];
 
-for (const file of ['index.html', 'styles.css', 'app.js', 'schedules.csv']) {
-  await cp(file, `${out}/${file}`);
+await rm(outputDirectory, { recursive: true, force: true });
+await mkdir(outputDirectory, { recursive: true });
+
+for (const file of files) {
+  await cp(file, `${outputDirectory}/${file}`);
 }
 
-console.log('Static sailing schedule site copied to dist/');
+console.log("Static sailing schedule website copied to dist/");
